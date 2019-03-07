@@ -16,8 +16,16 @@ variable "name" {
   description = "Name of the deployment"
 }
 
+variable "etcd_peer_cert" {}
+variable "etcd_peer_key" {}
+variable "etcd_ca_cert" {}
+
 variable "size" {
   description = "Number of etcd members (must be odd)"
+}
+
+variable "create_tls" {
+  default = false
 }
 
 variable "instance_type" {
@@ -43,7 +51,6 @@ variable "vpc_id" {
 
 variable "route53_enabled" {
   description = "Defines whether a Route53 record should be created for client connections"
-  default     = "false"
 }
 
 variable "route53_zone_id" {
@@ -57,7 +64,6 @@ variable "load_balancer_internal" {
 variable "load_balancer_security_group_ids" {
   description = "List of the security group IDs to apply to the load balancer (ingress TCP 2379) (if empty, defaults to open to all)"
   type        = "list"
-  default     = []
 }
 
 variable "metrics_security_group_ids" {
