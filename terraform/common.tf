@@ -114,7 +114,7 @@ module "ignition" {
 
   eco_cert = "${var.create_tls == true ? module.tls.clients_server_cert : var.etcd_peer_cert}"
   eco_key  = "${var.create_tls == true ? module.tls.clients_server_key : var.etcd_peer_key}"
-  eco_ca   = "${var.create_tls == true ? module.tls.ca : var.etcd_ca}"
+  eco_ca   = "${var.create_tls == true ? module.tls.ca : var.etcd_ca_cert}"
 
   ignition_extra_config = "${var.ignition_extra_config}"
 }
